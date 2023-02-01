@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 const AppHeader = () => {
     const{ pathname } = useLocation()
+    
     return (
         <header className="app__header">
             <h1 className="app__title">

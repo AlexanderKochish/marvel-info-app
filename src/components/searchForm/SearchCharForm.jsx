@@ -6,10 +6,8 @@ import './searchCharForm.scss'
 const SearchCharForm = ({getCharForName}) => {
     const[charName,setCharName] = useState('')
     const[foundChar,setFoundChar] = useState(null)
-    // const[notFound,setNotFound] = useState(false)
 
     const handleSub = (data) => getCharForName(data)
-
 
     const searchChar = async(e) => {
         e.preventDefault()
@@ -25,10 +23,6 @@ const SearchCharForm = ({getCharForName}) => {
         }  
     }
 
-
-
-    console.log(foundChar);
-
     const content = <div className='char__form-bottom__block'>
         <p >There is! Visit {foundChar?.name} page?</p>
         <Link to={`/character/${foundChar?.id}`}>
@@ -37,6 +31,7 @@ const SearchCharForm = ({getCharForName}) => {
         </button>
         </Link>
     </div>
+    
   return (
     <form onSubmit={searchChar} className='char__form'>
         <label>Or find a character by name:</label>

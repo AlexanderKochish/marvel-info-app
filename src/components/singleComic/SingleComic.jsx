@@ -31,7 +31,11 @@ const SingleComic = () => {
     <>
     <AppBanner/>
         <div className="single-comic">
-            <img src={`${comics?.thumbnail?.path}.${comics?.thumbnail?.extension}`} alt="x-men" className="single-comic__img"/>
+            <img 
+                src={`${comics?.thumbnail?.path}.${comics?.thumbnail?.extension}`} 
+                alt="x-men" 
+                className="single-comic__img"
+            />
             <div className="single-comic__info">
                 <h2 className="single-comic__name">{comics?.title}</h2>
                 <p className="single-comic__descr">{altTextDscription}</p>

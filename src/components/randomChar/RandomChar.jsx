@@ -66,9 +66,11 @@ class RandomChar extends Component {
 }
 
 const RandomCard = ({ randomChar }) => {
+  
   const altDescriptionText = !randomChar?.description
     ? "Not description this Character"
     : randomChar?.description;
+
   return (
     <div className="randomchar__block">
       <img

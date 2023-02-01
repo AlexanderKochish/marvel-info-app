@@ -23,7 +23,7 @@ class App extends Component{
 
     render(){
         const { charId,foundChar } = this.state;
-console.log(location.pathname);
+
         return (
             <div className="app">
                 <AppHeader/>

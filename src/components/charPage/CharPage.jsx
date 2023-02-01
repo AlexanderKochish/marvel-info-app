@@ -5,7 +5,8 @@ import AppBanner from '../appBanner/AppBanner';
 
 const CharPage = ({foundChar}) => {
 
-    const altDesriptionText = !foundChar.description?'No description this Character':foundChar.description;
+  const altDesriptionText = !foundChar.description?'No description this Character':foundChar.description;
+  
   return (
     <div className='charpage'>
       <AppBanner/>
