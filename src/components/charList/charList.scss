@@ -1,57 +1,80 @@
-@import '../../style/variables.scss';
+@import "../../style/variables.scss";
+@import "../../style/_breakpoints.scss";
 
 .char {
-    &__wrapper{
-        display: flex;
-        flex-direction: column;
+  &__wrapper {
+    @include xl {
+      display: flex;
+      flex-direction: column;
     }
-    &__content {
-        margin-top: 50px;
-        display: grid;
-        grid-template-columns: 650px 425px;
-        column-gap: 25px;
-        align-items: start;
+  }
+  &__content {
+    @include xl {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: 650px 425px;
+      column-gap: 25px;
+      align-items: start;
     }
-    &__grid {
-        display: grid;
-        grid-template-columns: repeat(3, 200px);
-        column-gap: 25px;
-        row-gap: 30px;
-        
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  &__grid {
+    @include xl {
+      display: grid;
+      grid-template-columns: repeat(3, 200px);
+      column-gap: 25px;
+      row-gap: 30px;
     }
-    &__item {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  &__item {
+    @include xl {
+      width: 200px;
+      height: 318px;
+      background-color: $dark;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+      padding: 15px;
+      cursor: pointer;
+      transition: 0.3s transform;
+    }
+    width: 200px;
+    height: 318px;
+    background-color: $dark;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.3s transform;
+    margin: 10px;
+    img {
+      width: 200px;
+      height: 200px;
+      transform: translate(-15px, -15px);
+    }
+    &_selected {
+      width: 200px;
+      height: 318px;
+      background-color: $dark;
+      box-shadow: 0 5px 20px $main-color;
+      padding: 15px;
+      cursor: pointer;
+      transform: translateY(-8px);
+      img {
         width: 200px;
-        height: 318px;
-        background-color: $dark;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, .25);
-        padding: 15px;
-        cursor: pointer;
-        transition: 0.3s transform;
-        img {
-            width: 200px;
-            height: 200px;
-            transform: translate(-15px, -15px);  
-        }
-        &_selected {
-            width: 200px;
-            height: 318px;
-            background-color: $dark;
-            box-shadow: 0 5px 20px $main-color;
-            padding: 15px;
-            cursor: pointer;
-            transform: translateY(-8px);
-            img {
-                width: 200px;
-                height: 200px;
-                transform: translate(-15px, -15px);
-            }
-        }
+        height: 200px;
+        transform: translate(-15px, -15px);
+      }
     }
-    &__name {
-        font-weight: bold;
-        font-size: 22px;
-        line-height: 29px;
-        text-transform: uppercase;
-        color: #fff;
-    }
+  }
+  &__name {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 29px;
+    text-transform: uppercase;
+    color: #fff;
+  }
 }

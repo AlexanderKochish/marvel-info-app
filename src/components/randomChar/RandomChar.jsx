@@ -20,7 +20,7 @@ class RandomChar extends Component {
     let id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
     try {
       const res = await fetch(`${BASE_URL}characters/${id}?${API_KEY}`);
-      const {data} = await res.json();
+      const { data } = await res.json();
       return this.setState({
         randomChar: data.results[0],
         loading: false,
@@ -66,7 +66,6 @@ class RandomChar extends Component {
 }
 
 const RandomCard = ({ randomChar }) => {
-  
   const altDescriptionText = !randomChar?.description
     ? "Not description this Character"
     : randomChar?.description;

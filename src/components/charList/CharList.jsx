@@ -34,7 +34,7 @@ class CharList extends Component {
           .then(({ data }) =>
             this.setState(({ charList }) => ({
               charList: [...charList, ...data.results],
-              loading:false
+              loading: false,
             }))
           ),
         // get total number characters
@@ -61,7 +61,7 @@ class CharList extends Component {
 
     let observer = new IntersectionObserver(callback);
     observer.observe(this.myRef.current);
-    if(this.state.offset >= this.state.total) observer.disconnect()
+    if (this.state.offset >= this.state.total) observer.disconnect();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -72,24 +72,24 @@ class CharList extends Component {
 
   render() {
     const { charList, error, loading } = this.state;
-    const { getCharId,charId,getCharForName } = this.props;
-   
+    const { getCharId, charId, getCharForName } = this.props;
+
     const spinner = loading ? <Spinner /> : null;
     const err = error ? "Something wrong" : null;
     const content = !error ? (
-      <ListItems charList={charList} getCharId={getCharId} charId={charId}/>
+      <ListItems charList={charList} getCharId={getCharId} charId={charId} />
     ) : null;
     return (
       <div className="char__wrapper">
-        <RandomChar/>
+        <RandomChar />
         <div className="char__content">
-            <div className="char__list">
-              {err}
-              {content}
-              {spinner}
-              <div ref={this.myRef}></div>
-            </div>
-          <CharInfo charId={charId} getCharForName={getCharForName}/>
+          <div className="char__list">
+            {err}
+            {content}
+            {spinner}
+            <div ref={this.myRef}></div>
+          </div>
+          <CharInfo charId={charId} getCharForName={getCharForName} />
         </div>
       </div>
     );
@@ -97,25 +97,34 @@ class CharList extends Component {
 }
 
 const ListItems = ({ charList, getCharId }) => {
+  const handleSelect = (index, id) => {
+    const list = document.querySelectorAll(".char__item");
+    const info = document.querySelector("#info");
+    const skeleton = document.querySelector("#skeleton");
+    list.forEach((item) => item.classList.remove("char__item_selected"));
+    list[index].classList.add("char__item_selected");
+    getCharId(id);
+    (skeleton || info).scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
-
-  const handleSelect = (index,id) => {
-    let list = document.querySelectorAll('.char__item')
-    list.forEach(item => item.classList.remove('char__item_selected'))
-    list[index].classList.add('char__item_selected')
-    getCharId(id)
-  }
-    
   return (
     <ul className="char__grid">
-      {charList.map(({ id, name, thumbnail },index) =>( 
-        <li onClick={()=>handleSelect(index,id)} key={id} className='char__item'>
+      {charList.map(({ id, name, thumbnail }, index) => (
+        <li
+          onClick={() => handleSelect(index, id)}
+          key={id}
+          className="char__item"
+        >
           <img
             src={`${thumbnail.path}.${thumbnail.extension}`}
             alt="character"
           />
           <div className="char__name">{name}</div>
-        </li>))}
+        </li>
+      ))}
     </ul>
   );
 };

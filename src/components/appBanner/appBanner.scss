@@ -1,21 +1,45 @@
-@import '../../style/variables.scss';
+@import "../../style/variables.scss";
+@import "../../style/breakpoints";
 
 .app {
-    &__banner {
-        width: 100%;
-        background-color: $dark;
-        height: 100px;
-        padding: 0 25px 0 45px;
-        display: grid;
-        grid-template-columns: 152px auto 133px;
-        margin-bottom: 50px;
-        &-text {
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 32px;
-            color: #FFFFFF;
-            padding-left: 83px;
-            padding-top: 18px;
-        }
+  &__banner {
+    @include md {
+      width: 100%;
+      background-color: $dark;
+      height: 100px;
+      padding: 0 25px 0 45px;
+      display: grid;
+      grid-template-columns: 152px auto 133px;
+      margin-bottom: 50px;
     }
+    width: 100%;
+    background-color: $dark;
+    min-height: 100px;
+    padding: 0 25px 0 45px;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: auto auto;
+    margin-bottom: 50px;
+
+    &-text {
+      @include md {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        color: #ffffff;
+        padding-top: 20px;
+        margin: 0;
+        display: block;
+      }
+      display: none;
+    }
+    &-img {
+      @include sm {
+        width: 133px;
+        min-height: 50px;
+        display: block;
+      }
+      display: none;
+    }
+  }
 }
